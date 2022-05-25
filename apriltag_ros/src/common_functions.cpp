@@ -343,6 +343,17 @@ AprilTagDetectionArray TagDetector::detectTags (
     tag_detection.pose = tag_pose;
     tag_detection.id.push_back(detection->id);
     tag_detection.size.push_back(tag_size);
+    
+    // Include tag corners' pixel coordinates
+    tag_detection.pix_tl[0]=detection->p[3][0];
+    tag_detection.pix_tl[1]=detection->p[3][1];
+    tag_detection.pix_tr[0]=detection->p[2][0];
+    tag_detection.pix_tr[1]=detection->p[2][1];
+    tag_detection.pix_br[0]=detection->p[1][0];
+    tag_detection.pix_br[1]=detection->p[1][1];
+    tag_detection.pix_bl[0]=detection->p[0][0];
+    tag_detection.pix_bl[1]=detection->p[0][1];
+
     tag_detection_array.detections.push_back(tag_detection);
     detection_names.push_back(standaloneDescription->frame_name());
   }
